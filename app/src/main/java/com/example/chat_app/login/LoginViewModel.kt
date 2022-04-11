@@ -4,6 +4,7 @@ import androidx.databinding.ObservableField
 import com.example.chat_app.base.BaseViewModel
 import com.example.chat_app.database.signIn
 import com.example.chat_app.model.AppUser
+import com.example.chat_app.objects.DataUtils
 import com.google.android.gms.tasks.OnFailureListener
 import com.google.android.gms.tasks.OnSuccessListener
 import com.google.firebase.auth.ktx.auth
@@ -45,6 +46,7 @@ class LoginViewModel : BaseViewModel<Navigator>() {
                if(user == null){
                    messageLiveData.value = "Inavalid Email And Passeord"
                }else {
+                   DataUtils.user = user
                    navigator?.openHomeScreen()
                }
 

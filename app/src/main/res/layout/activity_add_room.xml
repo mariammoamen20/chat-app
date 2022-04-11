@@ -58,23 +58,39 @@
 
             <androidx.cardview.widget.CardView
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_height="0dp"
                 android:layout_marginTop="50dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintWidth_percent="0.8">
+                app:layout_constraintHeight_percent="0.8"
+                app:layout_constraintWidth_percent="0.9">
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:orientation="vertical"
+                android:padding="5dp"
+                android:weightSum="5"
                 android:gravity="center_horizontal"
                 >
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Create New Room "
+                    android:textSize="18sp"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/poppins_regular"
+                    android:layout_margin="10dp"
+                    android:textColor="@color/black"
+                    android:textStyle="bold"
+
+                    />
                 <ImageView
                     android:layout_width="match_parent"
                     android:layout_height="80dp"
+                    android:layout_margin="5dp"
                     android:src="@drawable/group"
-                    android:layout_marginTop="2dp"
+                    android:layout_weight="1"
                     android:adjustViewBounds="true"
                     />
                 <com.google.android.material.textfield.TextInputLayout
@@ -89,13 +105,18 @@
                         android:layout_height="match_parent"
                         android:fontFamily="@font/poppins_regular"
                         android:hint="Room Name"
+                        android:layout_margin="5dp"
+                        android:layout_weight="1"
                         android:text="@={vm.roomName}"
                         android:textColor="@color/black" />
                 </com.google.android.material.textfield.TextInputLayout>
                 <Spinner
                     android:id="@+id/spinner"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"/>
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:layout_weight="1"
+                    />
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/description_label"
                     android:layout_width="match_parent"
@@ -108,6 +129,8 @@
                         android:layout_height="match_parent"
                         android:fontFamily="@font/poppins_regular"
                         android:hint="Room Name"
+                        android:layout_margin="5dp"
+                        android:layout_weight="1"
                         android:text="@={vm.descrptionRoom}"
                         android:textColor="@color/black"
                         android:lines="4"
@@ -116,9 +139,11 @@
                         />
                 </com.google.android.material.textfield.TextInputLayout>
                 <Button
-                    android:layout_width="wrap_content"
+                    android:layout_width="250dp"
                     android:layout_height="wrap_content"
                     android:text="Create Room"
+                    android:layout_margin="30dp"
+                    android:background="@drawable/custom_button"
                     android:onClick="@{()->vm.createRoom()}"
                     />
             </LinearLayout>

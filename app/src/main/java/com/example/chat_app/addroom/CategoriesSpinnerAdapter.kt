@@ -38,12 +38,10 @@ class CategoriesSpinnerAdapter(val catList: List<Category>) : BaseAdapter() {
         }
 val item  = catList[position]
         categoryViewHolder.title.setText(item.name)
-        categoryViewHolder.image.setImageResource(item.imageId!!)
         return myView!!
     }
 
     class CategoryViewHolder(val view : View){
         val title : TextView = view.findViewById(R.id.spinner_title)
-        val image : ImageView = view.findViewById(R.id.spinner_image)
     }
 }

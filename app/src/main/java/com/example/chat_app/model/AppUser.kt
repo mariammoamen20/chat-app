@@ -1,6 +1,6 @@
 package com.example.chat_app.model
 
-data class AppUser(
+data  class AppUser(
     val id :String?=null,
     val firstName:String?=null,
     val lastName:String?=null,

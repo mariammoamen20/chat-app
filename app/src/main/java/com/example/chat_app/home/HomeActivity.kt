@@ -4,10 +4,12 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
+import com.example.chat_app.objects.Constant
 import com.example.chat_app.R
 import com.example.chat_app.addroom.AddRoomActivity
 import com.example.chat_app.addroom.AddRoomAdapter
 import com.example.chat_app.base.BaseActivity
+import com.example.chat_app.chat.ChatActivity
 import com.example.chat_app.database.getRooms
 import com.example.chat_app.databinding.ActivityHomeBinding
 import com.example.chat_app.model.Room
@@ -18,8 +20,24 @@ class HomeActivity : BaseActivity<ActivityHomeBinding, HomeViewModel>(), Navigat
         super.onCreate(savedInstanceState)
         view_data_binding.vm = view_model
         view_model.navigator = this
+        initRecyclerview()
 
+
+    }
+    fun initRecyclerview(){
         view_data_binding.roomRecyclerView.adapter = addRoomAdapter
+        addRoomAdapter.onItemClickListener = object :
+            AddRoomAdapter.OnItemCLickListener { override fun onClickItem(position: Int, room: Room) {
+              startChatActivity(room)
+            }
+
+        }
+    }
+
+    private fun startChatActivity(room: Room) {
+      val intent = Intent(this,ChatActivity::class.java)
+        intent.putExtra(Constant.EXTRA_ROOM,room)
+        startActivity(intent)
     }
 
     override fun onStart() {

@@ -5,6 +5,7 @@ import androidx.databinding.ObservableField
 import com.example.chat_app.base.BaseViewModel
 import com.example.chat_app.database.addUserToFireStore
 import com.example.chat_app.model.AppUser
+import com.example.chat_app.objects.DataUtils
 import com.google.android.gms.tasks.OnFailureListener
 import com.google.android.gms.tasks.OnSuccessListener
 import com.google.firebase.auth.ktx.auth
@@ -69,6 +70,7 @@ class RegistrationViewModel : BaseViewModel<Navigator>() {
         )
         addUserToFireStore(user, OnSuccessListener {
             showLoading.value = false
+            DataUtils.user = user
             navigator?.openHomeScreen()
         }, OnFailureListener {
             showLoading.value = false
